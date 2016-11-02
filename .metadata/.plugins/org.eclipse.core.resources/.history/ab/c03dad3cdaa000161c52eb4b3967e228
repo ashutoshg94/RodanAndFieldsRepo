@@ -52,18 +52,18 @@ public class RodanFieldsTest {
 		Actions actions=new Actions(driver);
 		actions.moveToElement(driver.findElement(By.xpath("//div[@class='hidden-xs']/div[@class='container-fluid black-nav']//a[@id='our-products']"))).build().perform();
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//*[@id='dropdown-menu']/li[7]/div/a")).click();
-	
+		driver.findElement(By.xpath("//ul[@style='display: none;']//a[text()='All Products']")).click();
+		
+//		Thread.sleep(5000);
+//		driver.findElement(By.linkText("All Products")).click();
+		
 		driver.findElement(By.xpath("//*[@id='quick-refine']//input[@value='- Price -']")).click();
 		driver.findElement(By.xpath("//*[@id='quick-refine']/div[2]/div[2]/ul/li[2]/form/div/div[1]/div[2]/div")).click();
-//		String costOfFirstProdct=driver.findElement(By.xpath("//*[@id='main-content']//span[text()='CAD$ 71.00']")).getText();
-//		System.out.println(costOfFirstProdct);
+		String costOfFirstProdct=driver.findElement(By.xpath("//*[@id='main-content']//span[text()='CAD$ 71.00']")).getText();
+		System.out.println(costOfFirstProdct);
 		//Assert.assertTrue(condition);
-		String costText=driver.findElement(By.xpath("//label[text()='CAD$50 TO CAD$199.99']")).getText();
-		Assert.assertEquals(costText, "CAD$50 TO CAD$199.99");
 		driver.findElement(By.xpath("//*[@id='sortOptions']")).click();
 		driver.findElement(By.xpath(".//*[@id='sortOptions']/option[3]")).click();
-		
 		//Assert.assertTrue(condition);
 		
 		

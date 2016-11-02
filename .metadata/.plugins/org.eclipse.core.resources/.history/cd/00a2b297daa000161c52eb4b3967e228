@@ -63,7 +63,6 @@ public class RodanFieldsTest {
 		Assert.assertEquals(costText, "CAD$50 TO CAD$199.99");
 		driver.findElement(By.xpath("//*[@id='sortOptions']")).click();
 		driver.findElement(By.xpath(".//*[@id='sortOptions']/option[3]")).click();
-		
 		//Assert.assertTrue(condition);
 		
 		

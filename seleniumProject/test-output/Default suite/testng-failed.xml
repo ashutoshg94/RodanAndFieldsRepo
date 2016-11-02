@@ -6,6 +6,8 @@
       <class name="com.selenium.tests.RodanFieldsTest">
         <methods>
           <include name="testSkincareProducts"/>
+          <include name="testEnd"/>
+          <include name="testBegin"/>
         </methods>
       </class> <!-- com.selenium.tests.RodanFieldsTest -->
     </classes>
