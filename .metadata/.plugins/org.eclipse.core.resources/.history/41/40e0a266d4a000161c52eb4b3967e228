@@ -1,0 +1,71 @@
+package com.selenium.tests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class RodanFieldsTest {
+
+	WebDriver driver;
+	
+	
+	@Test
+	public void testRodanFieldsMethod(){
+		
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+		
+		
+		driver.get("https://www.rodanandfields.com/ca");
+		Actions actions=new Actions(driver);
+		actions.moveToElement(driver.findElement(By.xpath("//div[@class='hidden-xs']/div[@class='container-fluid black-nav']//a[@id='corp-opp']"))).build().perform();
+		driver.findElement(By.linkText("ENROLL NOW")).click();
+		
+		driver.findElement(By.xpath("//input[@id='sponserparam']")).sendKeys("mary");
+		driver.findElement(By.xpath("//*[@id='search-sponsor-button']")).click();
+		
+		driver.findElement(By.xpath("//*[@id='sponsorPage']//a[@class='next']")).click();
+		
+		String page=driver.findElement(By.xpath("//*[@id='sponsorPage']//span[text()='2']")).getText();
+		System.out.println(page);
+		Assert.assertEquals(page, "2");
+		
+	    driver.close();		
+	}
+	
+	
+	@Test
+	public void testSkincareProducts(){
+		
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+		
+		
+		driver.get("https://www.rodanandfields.com/ca");
+		Actions actions=new Actions(driver);
+		actions.moveToElement(driver.findElement(By.xpath("//div[@class='hidden-xs']/div[@class='container-fluid black-nav']//a[@id='our-products']"))).build().perform();
+		driver.findElement(By.xpath("//ul[@style='display: none;']//a[text()='All Products']")).click();
+		//Select sel=new Select(driver.findElement(By.xpath("//*[@id='quick-refine']//input[@value='- Price -']")));
+		driver.findElement(By.xpath("//*[@id='quick-refine']//input[@value='- Price -']")).click();
+		driver.findElement(By.xpath("//*[@id='quick-refine']/div[2]/div[2]/ul/li[2]/form/div/div[1]/div[2]/div")).click();
+		/*String costOfFirstProdct=driver.findElement(By.xpath("//*[@id='main-content']//span[text()='CAD$ 71.00']")).getText();
+		System.out.println(costOfFirstProdct);
+		Assert.assertTrue(costOfFirstProdct);
+		//Assert.assertEquals(costOfFirstProdct, expected);
+*/		
+		String costText=driver.findElement(By.xpath("//label[text()='CAD$50 TO CAD$199.99']")).getText();
+		Assert.assertEquals(costText, "CAD$50 TO CAD$199.99");
+	}
+	
+	
+	
+}

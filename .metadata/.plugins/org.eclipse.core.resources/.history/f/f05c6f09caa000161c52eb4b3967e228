@@ -1,0 +1,13 @@
+package com.selenium.tests;
+
+public class RodanFieldsTest {
+
+	public void testRodanFieldsMethod(){
+		
+		WebDriver driver;
+	    
+		
+	}
+	
+	
+}

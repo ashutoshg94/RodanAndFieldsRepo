@@ -1,0 +1,34 @@
+package com.selenium.tests;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class RodanFieldsTest {
+
+	public void testRodanFieldsMethod(){
+		
+		WebDriver driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		driver.get("https://www.rodanandfields.com/ca");
+		Actions actions=new Actions(driver);
+		actions.moveToElement(driver.findElement(By.xpath("//div[@class='hidden-xs']/div[@class='container-fluid black-nav']//a[@id='corp-opp']"))).build().perform();
+		driver.findElement(By.linkText("ENROLL NOW")).click();
+		
+		driver.findElement(By.xpath("//input[@id='sponserparam']")).sendKeys("mary");
+		driver.findElement(By.xpath("//*[@id='search-sponsor-button']")).click();;
+		driver.findElement(By.xpath("//*[@id='sponsorPage']//a[@class='next']")).click();
+		
+		
+		
+	    
+		
+	}
+	
+	
+}
